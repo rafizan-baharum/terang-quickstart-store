@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-title>Bank Codes</mat-card-title>
+  <mat-card-subtitle>List of bank codes</mat-card-subtitle>
+  <mat-divider></mat-divider>
+  <mat-list>
+    <ng-template let-bankCode let-last="last" ngFor [ngForOf]="bankCodes">
+      <mat-list-item>
+        <h3 mat-line> {{bankCode?.description}} </h3>
+        <span flex></span>
+        <span flex="80" layout-gt-xs="row">
+          <div class="mat-caption tc-grey-700" flex-gt-xs="50"> {{ bankCode?.code }} </div>
+        </span>
+        <span>
+          <!--button-->
+          <button mat-icon-button (click)="select(bankCode)">
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
+       </span>
+      </mat-list-item>
+      <mat-divider *ngIf="!last"></mat-divider>
+    </ng-template>
+  </mat-list>
+</mat-card>

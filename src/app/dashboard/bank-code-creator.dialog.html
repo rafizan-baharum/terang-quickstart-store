@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Bank Code Editor</h1>
+<div mat-dialog-content>
+  <form [formGroup]="editorForm">
+    <div layout="row" class="pad-bottom" flex>
+      <mat-form-field flex>
+        <input matInput
+               placeholder="Code"
+               formControlName="code"
+               type="text"
+               flex/>
+      </mat-form-field>
+    </div>
+    <div layout="row" class="pad-bottom" flex>
+      <mat-form-field flex>
+        <input matInput
+               placeholder="Description"
+               formControlName="description"
+               type="text"
+               flex/>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="accent" (click)="save(editorForm.value)" [disabled]="!editorForm.valid">
+    Add
+  </button>
+</div>
+
