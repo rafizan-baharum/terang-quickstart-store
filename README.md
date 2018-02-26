@@ -1,0 +1,2 @@
+# terang-quickstart-store
+Store
