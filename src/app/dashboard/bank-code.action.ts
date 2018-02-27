@@ -21,7 +21,7 @@ export class FindBankCodesAction implements Action {
   readonly type: string = FIND_BANK_CODES;
 
   constructor() {
-    console.log('FindBankCodesAction');
+    console.log('action: FindBankCodesAction');
   }
 }
 
@@ -29,7 +29,7 @@ export class FindBankCodesSuccessAction implements Action {
   readonly type: string = FIND_BANK_CODES_SUCCESS;
 
   constructor(public payload: BankCode[]) {
-    console.log('FindBankCodesSuccessAction');
+    console.log('action: FindBankCodesSuccessAction');
   }
 }
 
@@ -37,6 +37,7 @@ export class FindBankCodeByCodeAction implements Action {
   readonly type: string = FIND_BANK_CODE_BY_CODE;
 
   constructor(public payload: { code: string }) {
+    console.log('action: FindBankCodeByCodeAction');
   }
 }
 
@@ -44,6 +45,7 @@ export class FindBankCodeByCodeSuccessAction implements Action {
   readonly type: string = FIND_BANK_CODE_BY_CODE_SUCCESS;
 
   constructor(public payload: BankCode) {
+    console.log('action: FindBankCodeByCodeSuccessAction');
   }
 }
 

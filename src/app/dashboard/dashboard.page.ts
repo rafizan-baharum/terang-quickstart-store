@@ -17,12 +17,13 @@ export class DashboardPage implements OnInit, OnDestroy {
   bankCodes$: Observable<BankCode[]>;
 
   // constructor
-  constructor(private commonService: CommonService,
-              private router: Router,
+  constructor(private router: Router,
               private route: ActivatedRoute,
               private vcf: ViewContainerRef,
               private dialog: MatDialog,
               private store: Store<DashboardModuleState>) {
+    // the old way
+    // this.bankCodes$ = this.commonService.findBankCodes();
     this.bankCodes$ = this.store.select(bankCodesSelector);
   }
 
@@ -35,7 +36,6 @@ export class DashboardPage implements OnInit, OnDestroy {
   }
 
   viewBankCode(bankCode: BankCode): void {
-    console.log(JSON.stringify(bankCode));
     this.router.navigate(['/detail', bankCode.code]);
   }
 

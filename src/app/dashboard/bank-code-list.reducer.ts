@@ -12,7 +12,7 @@ const initialState: BankCodeListState = {
 export function bankCodeListReducer(state = initialState, action: FindBankCodesSuccessAction): BankCodeListState {
   switch (action.type) {
     case FIND_BANK_CODES_SUCCESS:
-      console.log('case: FIND_BANK_CODES_SUCCESS');
+      console.log('reducer: FIND_BANK_CODES_SUCCESS');
       return {
         bankCodes: action.payload,
       };

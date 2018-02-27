@@ -34,16 +34,19 @@ export class BankCodeEffects {
   @Effect()
   public findBankCodes$: Observable<Action> = this.actions$
     .ofType(FIND_BANK_CODES)
-    .map((action: FindBankCodesAction) => action)
+    .map((action: FindBankCodesAction) => {
+      console.log('effect: findBankCodes$');
+      return action;
+    })
     .switchMap((action) => this.commonService.findBankCodes())
-    .map(bankCodes => new FindBankCodesSuccessAction(bankCodes));
+    .map((bankCodes) => new FindBankCodesSuccessAction(bankCodes));
 
   @Effect()
   public findBankCodeByCode$: Observable<Action> = this.actions$
     .ofType(FIND_BANK_CODE_BY_CODE)
     .map((action: FindBankCodeByCodeAction) => action.payload)
-    .switchMap(payload => this.commonService.findBankCodeByCode(payload.code))
-    .map(bankCode => new FindBankCodeByCodeSuccessAction(bankCode));
+    .switchMap((payload) => this.commonService.findBankCodeByCode(payload.code))
+    .map((bankCode) => new FindBankCodeByCodeSuccessAction(bankCode));
 
   @Effect() saveBankCode$ = this.actions$
     .ofType(SAVE_BANK_CODE)
@@ -63,7 +66,7 @@ export class BankCodeEffects {
   @Effect() removeBankCode$ = this.actions$
     .ofType(REMOVE_BANK_CODE)
     .map((action: RemoveBankCodeAction) => action.payload)
-    .switchMap(payload => this.commonService.removeBankCode(payload))
-    .map(message => new RemoveBankCodeSuccessAction({message: 'success'}))
-    .mergeMap(action => from([action, new FindBankCodesAction()]));
+    .switchMap((payload) => this.commonService.removeBankCode(payload))
+    .map((message) => new RemoveBankCodeSuccessAction({message: 'success'}))
+    .mergeMap((action) => from([action, new FindBankCodesAction()]));
 }
